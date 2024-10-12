@@ -22,7 +22,7 @@ def sim(
     frequency: float,
     num_events: int,
     seed: int | None = None,
-) -> tuple[float, float]:
+) -> tuple[float, float, float, float]:
     """Simulates a communication system and calculates the AAoI.
 
     Args:
@@ -38,7 +38,8 @@ def sim(
       seed: Seed for the random number generator (optional).
 
     Returns:
-       Theoretical AAoI and simulation AAoI.
+       A tuple containing the theoretical AAoI, the simulation AAoI, the
+         theoretical SNR and the theoretical block error rate.
     """
     # Input validation
     if not 0 <= active_prob <= 1:
@@ -60,7 +61,7 @@ def sim(
     rng = Generator(PCG64(seed))
 
     lambda1 = 1  # arrival for one transmission period
-    num_events = num_events  # number of events
+    # num_events = num_events  # number of events
     inter_arrival_times = (1 / lambda1) * (np.ones(num_events))  # inter arrival times
     arrival_timestamps = np.cumsum(inter_arrival_times)  # arrival timestamps
     d1 = distance  # distance between source nodes and relay
@@ -77,9 +78,12 @@ def sim(
     snr2_th = snr_th(
         N0, d2, P2, frequency
     )  # block error rate for the source nodes at the relay or access point
+    assert snr1_th == snr2_th  # Currently, these are the same!
 
     er1_th = block_error_th(snr1_th, n1, k1)
     er2_th = block_error_th(snr2_th, n2, k2)
+    assert er1_th == er2_th  # Currently, these are the same!
+
     inter_service_times = (1 / lambda1) * np.ones((num_events))  # inter service times
     server_timestamps_1 = np.zeros(
         num_events
@@ -140,7 +144,7 @@ def sim(
     system_time = 1 / lambda1  # system time (time which update in the system)
     av_age_simulation, _, _ = aaoi_fn(v1, t1, system_time)
 
-    return av_age_theoretical, av_age_simulation
+    return av_age_theoretical, av_age_simulation, snr1_th, er1_th
 
 
 def ev_sim(
@@ -174,7 +178,7 @@ def ev_sim(
     Returns:
       A tuple containing the theoretical AAoI and the simulation AAoI.
     """
-    num_runs = num_runs
+    # num_runs = num_runs
     av_age_theoretical_run = 0.0
     av_age_simulation_run = 0.0
     rng = Generator(PCG64(seed))  # Initialize RNG here for consistent seeds across runs
