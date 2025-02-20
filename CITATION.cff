@@ -1,0 +1,53 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Agenet
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Chathuranga M.
+    family-names: Wijerathna Basnayaka
+    email: basnayakac8@gmail.com
+    affiliation: 'Lusófona University, COPELABS'
+    orcid: 'https://orcid.org/0000-0001-9094-5494'
+  - given-names: Nuno
+    family-names: Fachada
+    email: nuno.fachada@ulusofona.pt
+    affiliation: 'Lusófona University, CTS/UNINOVA'
+    orcid: 'https://orcid.org/0000-0002-8487-5837'
+repository-code: 'https://github.com/cahthuranag/agenet'
+abstract: >-
+   Python package for estimating Age of Information (AoI) in cooperative
+   wireless networks to support research on time-sensitive communication
+   systems.
+keywords:
+  - age of information
+  - short-packet transmission
+  - wireless networks
+license: MIT
+preferred-citation:
+  type: article
+  authors:
+    - given-names: Chathuranga M.
+      family-names: Wijerathna Basnayaka
+      email: basnayakac8@gmail.com
+      affiliation: 'Lusófona University, COPELABS'
+      orcid: 'https://orcid.org/0000-0001-9094-5494'
+    - given-names: Nuno
+      family-names: Fachada
+      email: nuno.fachada@ulusofona.pt
+      affiliation: 'Lusófona University, CTS/UNINOVA'
+      orcid: 'https://orcid.org/0000-0002-8487-5837'
+  title: 'Agenet: Age of Information evaluation in wireless networks'
+  journal: SoftwareX
+  doi: 10.1016/j.softx.2025.102086
+  volume: 30
+  start: 102086
+  month: 5
+  year: 2025
+  url: 'https://doi.org/10.1016/j.softx.2025.102086'
+  publisher:
+    name: Elsevier
